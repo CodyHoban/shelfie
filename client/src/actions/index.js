@@ -1,5 +1,13 @@
 import shelfs from '../apis/shelfs'
-import { SIGN_IN, SIGN_OUT } from './types';
+import { 
+    SIGN_IN, 
+    SIGN_OUT, 
+    CREATE_SHELF,
+    FETCH_SHELFS,
+    FETCH_SHELF,
+    DELETE_SHELF,
+    EDIT_SHELF
+    } from './types';
 
 export const signIn = (userId) => {
     return {
@@ -15,5 +23,31 @@ export const signOut = () => {
 };
 
 export const createShelf = (formValues) => async (dispatch) => {
-    shelfs.post('/shelfs', formValues);
+    const response = await shelfs.post('/shelfs', formValues);
+
+    dispatch({ type: CREATE_SHELF, payload: response.data });
 };
+
+export const fetchShelfs = () => async (dispatch) => {
+    const response = await shelfs.get('/shelfs');
+
+    dispatch({ type: FETCH_SHELFS, payload: response.data });
+}
+
+export const fetchShelf = (id) => async (dispatch) => {
+    const response = await shelfs.get(`/streams/${id}`);
+
+    dispatch({ type: FETCH_SHELF, payload: response.data });
+}
+
+export const editShelf = (id, formValues) => async dispatch => {
+    const response = await shelfs.put(`/shelfs/${id}`, formValues);
+
+    dispatch({ type: EDIT_SHELF, payload: response.data});
+}
+
+export const deleteShelf = (id) => async (dispatch) => {
+    await shelfs.delete(`/shelfs/${id}`);
+
+    dispatch({ type: DELETE_SHELF, payload: id });
+}

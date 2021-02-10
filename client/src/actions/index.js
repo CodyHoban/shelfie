@@ -22,8 +22,9 @@ export const signOut = () => {
     };
 };
 
-export const createShelf = (formValues) => async (dispatch) => {
-    const response = await shelfs.post('/shelfs', formValues);
+export const createShelf = (formValues) => async (dispatch, getState) => {
+    const { userId } = getState().auth;
+    const response = await shelfs.post('/shelfs', { ...formValues, userId });
 
     dispatch({ type: CREATE_SHELF, payload: response.data });
 };

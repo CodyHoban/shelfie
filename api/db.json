@@ -1,0 +1,26 @@
+{
+  "shelfs": [
+    {
+      "title": "First Shelf",
+      "description": "this is the first shelf",
+      "id": 1
+    },
+    {
+      "title": "Other Shelf",
+      "description": "Here is some shelf",
+      "id": 2
+    },
+    {
+      "title": "New Shelf For Me",
+      "description": "I made a new shelf",
+      "userId": "114802117408647198099",
+      "id": 3
+    },
+    {
+      "title": "Unexpected Behavior",
+      "description": "Didn't expect that",
+      "userId": "114802117408647198099",
+      "id": 4
+    }
+  ]
+}

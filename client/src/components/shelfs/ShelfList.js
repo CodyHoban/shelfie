@@ -14,9 +14,9 @@ class ShelfList extends React.Component {
         if (shelf.userId === this.props.currentUserId) {
             return (
                 <div className="right floated content">
-                    <button className="ui button primary">
+                    <Link to={`/shelfs/edit/${shelf.id}`} className="ui button primary">
                         Edit
-                    </button>
+                    </Link>
                     <button className="ui button negative">
                         Delete
                     </button>

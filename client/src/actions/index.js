@@ -1,4 +1,5 @@
 import shelfs from '../apis/shelfs'
+import history from '../history'
 import { 
     SIGN_IN, 
     SIGN_OUT, 
@@ -27,6 +28,7 @@ export const createShelf = (formValues) => async (dispatch, getState) => {
     const response = await shelfs.post('/shelfs', { ...formValues, userId });
 
     dispatch({ type: CREATE_SHELF, payload: response.data });
+    history.push('/')
 };
 
 export const fetchShelfs = () => async (dispatch) => {

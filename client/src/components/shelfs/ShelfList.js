@@ -28,7 +28,7 @@ class ShelfList extends React.Component {
     renderList() {
         return this.props.shelfs.map(shelf => {
             return (
-                <div className="item" key={shelfReducer.id}>
+                <div className="item" key={shelf.id}>
                     {this.renderAdmin(shelf)}
                     <i className="large middle aligned icon camera" />
                     <div className="content">

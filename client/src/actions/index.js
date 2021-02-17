@@ -38,7 +38,7 @@ export const fetchShelfs = () => async (dispatch) => {
 }
 
 export const fetchShelf = (id) => async (dispatch) => {
-    const response = await shelfs.get(`/streams/${id}`);
+    const response = await shelfs.get(`/shelfs/${id}`);
 
     dispatch({ type: FETCH_SHELF, payload: response.data });
 }

@@ -44,9 +44,10 @@ export const fetchShelf = (id) => async (dispatch) => {
 }
 
 export const editShelf = (id, formValues) => async dispatch => {
-    const response = await shelfs.put(`/shelfs/${id}`, formValues);
+    const response = await shelfs.patch(`/shelfs/${id}`, formValues);
 
     dispatch({ type: EDIT_SHELF, payload: response.data});
+    history.push('/');
 }
 
 export const deleteShelf = (id) => async (dispatch) => {

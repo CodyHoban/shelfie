@@ -18,7 +18,7 @@ const App = () => {
                     <Route path="/" exact component={ShelfList} />
                     <Route path="/shelfs/new" exact component={ShelfCreate} />
                     <Route path="/shelfs/edit/:id" exact component={ShelfEdit} />
-                    <Route path="/shelfs/delete" exact component={ShelfDelete} />
+                    <Route path="/shelfs/delete/:id" exact component={ShelfDelete} />
                     <Route path="/Shelfs/show" exact component={ShelfShow} />
                 </div>
             </Router>

@@ -17,9 +17,9 @@ class ShelfList extends React.Component {
                     <Link to={`/shelfs/edit/${shelf.id}`} className="ui button primary">
                         Edit
                     </Link>
-                    <button className="ui button negative">
+                    <Link to={`/shelfs/delete/${shelf.id}`} className="ui button negative">
                         Delete
-                    </button>
+                    </Link>
                 </div>
             )
         }

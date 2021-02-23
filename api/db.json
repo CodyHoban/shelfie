@@ -12,14 +12,13 @@
     },
     {
       "title": "New Shelf For Me",
-      "description": "I made a new shelf",
+      "description": "This change was a patch request",
       "userId": "114802117408647198099",
       "id": 3
     },
     {
-      "title": "Unexpected Behavior",
-      "description": "Didn't expect that",
-      "userId": "114802117408647198099",
+      "title": "After Shower Routine",
+      "description": "This is now about refactoring",
       "id": 4
     }
   ]

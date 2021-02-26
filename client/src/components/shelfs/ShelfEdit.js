@@ -7,6 +7,7 @@ import ShelfForm from './ShelfForm'
 class ShelfEdit extends React.Component {
     componentDidMount() {
         this.props.fetchShelf(this.props.match.params.id);
+        console.log(this.props)
     }
 
     onSubmit = formValues => {

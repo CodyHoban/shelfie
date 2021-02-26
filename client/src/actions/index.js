@@ -7,7 +7,8 @@ import {
     FETCH_SHELFS,
     FETCH_SHELF,
     DELETE_SHELF,
-    EDIT_SHELF
+    EDIT_SHELF,
+    CREATE_ITEM
     } from './types';
 
 export const signIn = (userId) => {
@@ -54,4 +55,13 @@ export const deleteShelf = (id) => async (dispatch) => {
     await shelfs.delete(`/shelfs/${id}`);
 
     dispatch({ type: DELETE_SHELF, payload: id });
+    history.push('/');
+}
+
+export const createItem =(formValues) => async (dispatch, getState) => {
+    const { userId } = getState().auth;
+    const response = await shelfs.post('/shelfs', { ...formValues, userId });
+
+    dispatch({ type: CREATE_ITEM, payload: response.data });
+
 }

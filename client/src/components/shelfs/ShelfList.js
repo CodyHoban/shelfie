@@ -32,7 +32,9 @@ class ShelfList extends React.Component {
                     {this.renderAdmin(shelf)}
                     <i className="large middle aligned icon camera" />
                     <div className="content">
-                        {shelf.title}
+                        <Link to={`/shelfs/${shelf.id}`} className="header">
+                           {shelf.title}
+                        </Link>
                         <div className="description">{shelf.description}</div>
                     </div>
                 </div>

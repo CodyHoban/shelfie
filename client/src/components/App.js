@@ -6,7 +6,7 @@ import ShelfEdit from './shelfs/ShelfEdit'
 import ShelfDelete from './shelfs/ShelfDelete'
 import ShelfList from './shelfs/ShelfList'
 import ShelfShow from './shelfs/ShelfShow'
-import ItemCreate from './items/ItemCreate'
+import ItemCreate from './products/ProductCreate'
 import Header from './Header'
 import history from '../history'
 
@@ -48,7 +48,7 @@ class App extends React.Component {
                             <Route path="/shelfs/edit/:id" exact component={ShelfEdit} />
                             <Route path="/shelfs/delete/:id" exact component={ShelfDelete} />
                             <Route path="/Shelfs/:id" exact component={ShelfShow} />
-                            <Route path="/shelfs/item/new" exact component={ItemCreate} />
+                            <Route path="/shelfs/product/new" exact component={ItemCreate} />
                         </Switch>
                     </div>
                 </Router>

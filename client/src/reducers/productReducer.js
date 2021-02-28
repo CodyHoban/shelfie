@@ -1,26 +1,24 @@
 import _ from 'lodash'
 import {
-    FETCH_SHELF,
-    FETCH_SHELFS,
-    CREATE_SHELF,
-    EDIT_SHELF,
-    DELETE_SHELF,
-    CREATE_PRODUCT
+    FETCH_PRODUCT,
+    FETCH_PRODUCTS,
+    CREATE_PRODUCT,
+    EDIT_PRODUCT,
+    DELETE_PRODUCT
 } from '../actions/types'
 
 export default (state = {}, action) => {
     switch(action.type) {
-        case FETCH_SHELFS:
+        case FETCH_PRODUCTS:
             return { ...state, ..._.mapKeys(action.payload, 'id') };
-        case FETCH_SHELF:
+        case FETCH_PRODUCT:
             return { ...state, [action.payload.id]: action.payload };
-        case CREATE_SHELF:
+        case CREATE_PRODUCT:
             return { ...state, [action.payload.id]: action.payload };
-        case EDIT_SHELF:
+        case EDIT_PRODUCT:
             return { ...state, [action.payload.id]: action.payload };
-        case DELETE_SHELF:
+        case DELETE_PRODUCT:
             return _.omit(state, action.payload);
-
         default:
             return state;
     }

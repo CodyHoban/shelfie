@@ -12,12 +12,41 @@ class ShelfForm extends React.Component {
         }
     }
 
-    renderInput =({ input, label, meta }) => {
+    renderInput = ({ input, label, meta }) => {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
             <div className={className}>
                 <label>{label}</label>
                 <input {...input} autoComplete="off" />
+                {this.renderError(meta)}
+            </div>
+        );
+    }
+    
+    renderTextField = ({ input, label, meta }) => {
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <textarea {...input} />
+                {this.renderError(meta)}
+            </div>
+        );
+    }
+
+    renderIconMenu = ({ input, label, meta }) => {
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <select>
+                    <option>
+                        <i class="chess icon"></i>
+                    </option>
+                    <i class="chess icon"></i>
+                    <option value="lime">Lime</option>
+                    <option value="coconut">Coconut</option>
+                </select>
                 {this.renderError(meta)}
             </div>
         );
@@ -30,8 +59,9 @@ class ShelfForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-                <Field name="title" component={this.renderInput} label="Enter Title" />
-                <Field name="description" component={this.renderInput}  label="Enter Description" />
+                <Field name="name" component={this.renderInput} label="Give it a Name" />
+                <Field name="opinion" component={this.renderTextField}  label="What are your Thoughts?" />
+                <Field name="icon" component={this.renderIconMenu} label="Choose an Icon" />
                 <button className="ui button primary">Submit</button>
             </form>
             

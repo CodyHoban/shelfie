@@ -1,4 +1,5 @@
 import shelfs from '../apis/shelfs'
+
 import history from '../history'
 import { 
     SIGN_IN, 
@@ -8,7 +9,7 @@ import {
     FETCH_SHELF,
     DELETE_SHELF,
     EDIT_SHELF,
-    CREATE_ITEM
+    CREATE_PRODUCT
     } from './types';
 
 export const signIn = (userId) => {
@@ -58,10 +59,9 @@ export const deleteShelf = (id) => async (dispatch) => {
     history.push('/');
 }
 
-export const createItem =(formValues) => async (dispatch, getState) => {
+export const createProduct= (formValues) => async (dispatch, getState) => {
     const { userId } = getState().auth;
     const response = await shelfs.post('/shelfs', { ...formValues, userId });
 
-    dispatch({ type: CREATE_ITEM, payload: response.data });
-
+    dispatch({ type: CREATE_PRODUCT, payload: response.data });
 }

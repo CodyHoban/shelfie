@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { fetchShelfs } from '../../actions'
 import shelfReducer from '../../reducers/shelfReducer';
 import { _ } from 'lodash';
+import shelfs from '../../apis/shelfs';
 
 class ShelfList extends React.Component {
     componentDidMount() {
@@ -27,13 +28,16 @@ class ShelfList extends React.Component {
 
     renderList() {
         return this.props.shelfs.map(shelf => {
+            console.log(this.props.shelfs);
+            console.log(shelf);
+
             return (
                 <div className="item" key={shelf.id}>
                     {this.renderAdmin(shelf)}
                     <i className="large middle aligned icon camera" />
                     <div className="content">
                         <Link to={`/shelfs/${shelf.id}`} className="header">
-                           {shelf.title}
+                           {shelf.shelfData.title}
                         </Link>
                         <div className="description">{shelf.description}</div>
                     </div>

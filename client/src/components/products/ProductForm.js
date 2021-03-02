@@ -38,16 +38,18 @@ class ShelfForm extends React.Component {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
             <div className={className}>
-                <label>{label}</label>
-                <select>
-                    <option>
+                <div className="ui left icon input">
+                    <label className="ui dropdown item">{label}</label>
+                    <select>
+                        <option>
+                            <i class="chess icon"></i>
+                        </option>
                         <i class="chess icon"></i>
-                    </option>
-                    <i class="chess icon"></i>
-                    <option value="lime">Lime</option>
-                    <option value="coconut">Coconut</option>
-                </select>
-                {this.renderError(meta)}
+                        <option value="lime">Lime</option>
+                        <option value="coconut">Coconut</option>
+                    </select>
+                    {this.renderError(meta)}
+                </div>
             </div>
         );
     }

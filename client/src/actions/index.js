@@ -1,5 +1,5 @@
 import shelfs from '../apis/shelfs'
-
+import db from '../db'
 import history from '../history'
 import { 
     SIGN_IN, 
@@ -33,11 +33,28 @@ export const createShelf = (formValues) => async (dispatch, getState) => {
     history.push('/')
 };
 
-export const fetchShelfs = () => async (dispatch) => {
-    const response = await shelfs.get('/shelfs');
+// let shelfiesCollection = db.collection('shelfies').get().then((querySnapshot) => {
+//     querySnapshot.forEach((doc) => {
+//     console.log(`${doc.id} and ${doc.data()['title']}`)
+//     });
+//     });
 
-    dispatch({ type: FETCH_SHELFS, payload: response.data });
+export const fetchShelfs = () => async (dispatch) => {
+    const responseArray = [];
+    const response = await db.collection('shelfies').get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            responseArray.push({ id: doc.id, shelfData: doc.data()})
+            
+        });
+    });
+    dispatch({ type: FETCH_SHELFS, payload: responseArray });
 }
+
+// export const fetchShelfs = () => async (dispatch) => {
+//     const response = await shelfs.get('/shelfs');
+
+//     dispatch({ type: FETCH_SHELFS, payload: response.data });
+// }
 
 export const fetchShelf = (id) => async (dispatch) => {
     const response = await shelfs.get(`/shelfs/${id}`);

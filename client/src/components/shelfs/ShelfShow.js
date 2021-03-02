@@ -9,13 +9,13 @@ class ShelfShow extends React.Component {
     }
 
     renderCreateProduct() {
-        if (this.props.isSignedIn) {
+        return (
             <div style={{ textAlign: 'right'}}>
                 <Link to="/shelfs/product/new" className="ui button primary">
                     Add Product
                 </Link>
             </div>
-        }
+        )
     }
 
     renderCreate() {
@@ -41,7 +41,8 @@ class ShelfShow extends React.Component {
             <div>
                 <h1>{title}</h1>
                 <h5>{description}</h5>
-                {this.renderCreate()}
+                {this.renderCreateProduct()}
+                <h6>Hey Now</h6>
             </div>
         );
     }

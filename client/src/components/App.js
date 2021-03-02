@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import fire from '../fire'
+import db from '../db'
 import { Router, Route, Switch } from 'react-router-dom'
 import ShelfCreate from './shelfs/ShelfCreate'
 import ShelfEdit from './shelfs/ShelfEdit'
@@ -12,12 +12,11 @@ import history from '../history'
 
 
 class App extends React.Component {
-    componentWillMount(){
-        let db = fire.firestore();
-        let shelfCollection = db.collection('codyCollection').get().then((response) => {
-            console.log(response.docs[0].name)
-        });
-        console.log(shelfCollection);
+    // componentWillMount(){
+    //     let shelfCollection = db.collection('codyCollection').get().then((response) => {
+    //         console.log(response.docs[0].name)
+    //     });
+    //     console.log(shelfCollection);
         
         /* Create reference to messages in Firebase Database */
         // let messagesRef = fire.database().ref('messages').orderByKey().limitToLast(100);
@@ -26,7 +25,7 @@ class App extends React.Component {
         //   let message = { text: snapshot.val(), id: snapshot.key };
         //   this.setState({ messages: [message].concat(this.state.messages) });
         // })
-      }
+      //}
     //   addMessage(e){
     //     e.preventDefault(); // <- prevent form submit from reloading the page
     //     /* Send the message to Firebase */

@@ -9,5 +9,10 @@ var config = { /* COPY THE ACTUAL CONFIG FROM FIREBASE CONSOLE */
     appId: "1:829507158892:web:35593cf54c9e3c0ce16949",
     measurementId: "G-KJ10PVMR83"
 };
-var fire = firebase.initializeApp(config);
-export default fire;
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+ }else {
+    firebase.app(); // if already initialized, use that one
+ }
+var db = firebase.firestore();
+export default db;

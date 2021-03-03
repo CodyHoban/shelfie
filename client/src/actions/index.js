@@ -1,3 +1,4 @@
+import { bind } from 'lodash';
 import shelfs from '../apis/shelfs'
 import db from '../db'
 import history from '../history'
@@ -25,11 +26,21 @@ export const signOut = () => {
     };
 };
 
-export const createShelf = (formValues) => async (dispatch, getState) => {
-    const { userId } = getState().auth;
-    const response = await shelfs.post('/shelfs', { ...formValues, userId });
+// export const createShelf = (formValues) => async (dispatch, getState) => {
+//     const { userId } = getState().auth;
+//     const response = await shelfs.post('/shelfs', { ...formValues, userId });
 
-    dispatch({ type: CREATE_SHELF, payload: response.data });
+//     dispatch({ type: CREATE_SHELF, payload: response.data });
+//     history.push('/')
+// };
+
+export const createShelf = (formValues) => async (dispatch, getState) => {
+    const { userId } =getState().auth;
+    const response = await db.collection('shelfies').add({ ...formValues, userId }).then((docRef) => {})
+
+    
+
+    // dispatch({ type: CREATE_SHELF, payload: response.data });
     history.push('/')
 };
 
@@ -69,8 +80,17 @@ export const editShelf = (id, formValues) => async dispatch => {
     history.push('/');
 }
 
+// export const deleteShelf = (id) => async (dispatch) => {
+//     await shelfs.delete(`/shelfs/${id}`);
+
+//     dispatch({ type: DELETE_SHELF, payload: id });
+//     history.push('/');
+// }
+
 export const deleteShelf = (id) => async (dispatch) => {
-    await shelfs.delete(`/shelfs/${id}`);
+    await db.collection('shelfies').doc("DC").delete().then(() => {
+        console.log('Document succesfully deleted!');
+    });
 
     dispatch({ type: DELETE_SHELF, payload: id });
     history.push('/');

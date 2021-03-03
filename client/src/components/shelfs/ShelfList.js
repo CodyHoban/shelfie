@@ -11,29 +11,19 @@ class ShelfList extends React.Component {
         this.props.fetchShelfs();
     }
 
-    renderAdmin(shelf) {
-        if (shelf.userId === this.props.currentUserId) {
-            return (
-                <div className="right floated content">
-                    <Link to={`/shelfs/edit/${shelf.id}`} className="ui button primary">
-                        Edit
-                    </Link>
-                    <Link to={`/shelfs/delete/${shelf.id}`} className="ui button negative">
-                        Delete
-                    </Link>
-                </div>
-            )
-        }
-    }
-
     renderList() {
         return this.props.shelfs.map(shelf => {
-            console.log(this.props.shelfs);
-            console.log(shelf);
 
             return (
                 <div className="item" key={shelf.id}>
-                    {this.renderAdmin(shelf)}
+                    <div className="right floated content">
+                        <Link to={`/shelfs/edit/${shelf.id}`} className="ui button primary">
+                            Edit
+                        </Link>
+                        <Link to={`/shelfs/delete/${shelf.id}`} className="ui button negative">
+                            Delete
+                        </Link>
+                    </div>
                     <i className="large middle aligned icon camera" />
                     <div className="content">
                         <Link to={`/shelfs/${shelf.id}`} className="header">
@@ -41,6 +31,7 @@ class ShelfList extends React.Component {
                         </Link>
                         <div className="description">{shelf.description}</div>
                     </div>
+
                 </div>
             )
         })

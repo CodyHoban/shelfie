@@ -17,25 +17,14 @@ class ShelfShow extends React.Component {
             </div>
         )
     }
-
-    renderCreate() {
-        if (this.props.isSignedIn) {
-            return (
-                <div style={{ textAlign: 'right' }}>
-                    <Link to="/shelfs/product/new" className="ui button primary">
-                        Create Shelf
-                    </Link>
-                </div>
-            )
-        }
-    }
         
     render() {
+        console.log(this.props);
         if (!this.props.shelf) {
             return <div>Loading...</div>;
         }
 
-        const { title, description } = this.props.shelf;
+        const { title, description } = this.props.shelf.shelfData;
 
         return (
             <div>

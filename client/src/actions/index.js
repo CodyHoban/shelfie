@@ -58,6 +58,8 @@ export const fetchShelfs = () => async (dispatch) => {
             
         });
     });
+    console.log(responseArray);
+    console.log('in action');
     dispatch({ type: FETCH_SHELFS, payload: responseArray });
 }
 
@@ -67,10 +69,22 @@ export const fetchShelfs = () => async (dispatch) => {
 //     dispatch({ type: FETCH_SHELFS, payload: response.data });
 // }
 
-export const fetchShelf = (id) => async (dispatch) => {
-    const response = await shelfs.get(`/shelfs/${id}`);
+// export const fetchShelf = (id) => async (dispatch) => {
+//     const response = await shelfs.get(`/shelfs/${id}`);
 
-    dispatch({ type: FETCH_SHELF, payload: response.data });
+//     dispatch({ type: FETCH_SHELF, payload: response.data });
+// }
+
+export const fetchShelf = (id) => async (dispatch) => {
+    const responseArray = [];
+    const response = await db.collection('shelfies').get(id).then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            responseArray.push({ id: doc.id, shelfData: doc.data()})
+            
+        });
+        console.log(responseArray);
+    });
+    dispatch({ type: FETCH_SHELF, payload: responseArray })
 }
 
 export const editShelf = (id, formValues) => async dispatch => {
@@ -88,7 +102,7 @@ export const editShelf = (id, formValues) => async dispatch => {
 // }
 
 export const deleteShelf = (id) => async (dispatch) => {
-    await db.collection('shelfies').doc("DC").delete().then(() => {
+    await db.collection('shelfies').doc(id).delete().then(() => {
         console.log('Document succesfully deleted!');
     });
 

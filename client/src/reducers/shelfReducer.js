@@ -8,10 +8,12 @@ import {
     CREATE_PRODUCT
 } from '../actions/types'
 
-export default (state = {}, action) => {
+export default (state = {shelfs: []}, action) => {
     switch(action.type) {
         case FETCH_SHELFS:
-            return { ...state, ..._.mapKeys(action.payload, 'id') };
+            console.log(action.payload);
+            console.log('in reducer');
+            return { ...state, shelfs: action.payload };
         case FETCH_SHELF:
             return { ...state, [action.payload.id]: action.payload };
         case CREATE_SHELF:

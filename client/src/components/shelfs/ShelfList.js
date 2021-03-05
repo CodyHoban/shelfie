@@ -12,7 +12,8 @@ class ShelfList extends React.Component {
     }
 
     renderList() {
-        return this.props.shelfs.map(shelf => {
+        console.log(this.props);
+        return this.props.shelfs && this.props.shelfs.map(shelf => {
 
             return (
                 <div className="item" key={shelf.id}>
@@ -62,7 +63,7 @@ class ShelfList extends React.Component {
 
 const mapStateToProps = (state) => {
     return { 
-        shelfs: Object.values(state.shelfs),
+        shelfs: state.shelfs,
         currentUserId: state.auth.userId,
         isSignedIn: state.auth.isSignedIn
     }

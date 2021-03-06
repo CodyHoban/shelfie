@@ -22,7 +22,6 @@ export default (state = {shelfs: []}, action) => {
             return { ...state, [action.payload.id]: action.payload };
         case DELETE_SHELF:
             return _.omit(state, action.payload);
-
         default:
             return state;
     }

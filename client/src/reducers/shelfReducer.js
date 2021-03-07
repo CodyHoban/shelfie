@@ -8,14 +8,18 @@ import {
     CREATE_PRODUCT
 } from '../actions/types'
 
-export default (state = {shelfs: []}, action) => {
+const stateConfig = { 
+    shelfList: [],
+    selectedShelf: {},
+
+}
+
+export default (state = stateConfig, action) => {
     switch(action.type) {
         case FETCH_SHELFS:
-            console.log(action.payload);
-            console.log('in reducer');
-            return { ...state, shelfs: action.payload };
+            return { ...state, shelfList: action.payload };
         case FETCH_SHELF:
-            return { ...state, [action.payload.id]: action.payload };
+            return { ...state, selectedShelf: action.payload };
         case CREATE_SHELF:
             return { ...state, [action.payload.id]: action.payload };
         case EDIT_SHELF:

@@ -7,6 +7,7 @@ class ShelfShow extends React.Component {
     componentDidMount() {
         this.props.fetchShelf(this.props.match.params.id);
     }
+    
 
     renderCreateProduct() {
         return (
@@ -24,7 +25,7 @@ class ShelfShow extends React.Component {
             return <div>Loading...</div>;
         }
 
-        const { title, description } = this.props.shelf.shelfData;
+        const { title, description } = this.props.shelf;
 
         return (
             <div>
@@ -38,7 +39,8 @@ class ShelfShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return { shelf: state.shelfs[ownProps.match.params.id] };
+   
+    return { shelf: state.shelfs.selectedShelf };
 };
 
 

@@ -12,8 +12,7 @@ class ShelfList extends React.Component {
     }
 
     renderList() {
-        console.log(this.props);
-        return this.props.shelfs && this.props.shelfs.map(shelf => {
+        return this.props.shelfs.shelfList.map(shelf => {
 
             return (
                 <div className="item" key={shelf.id}>

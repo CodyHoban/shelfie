@@ -58,8 +58,6 @@ export const fetchShelfs = () => async (dispatch) => {
             
         });
     });
-    console.log(responseArray);
-    console.log('in action');
     dispatch({ type: FETCH_SHELFS, payload: responseArray });
 }
 
@@ -76,15 +74,16 @@ export const fetchShelfs = () => async (dispatch) => {
 // }
 
 export const fetchShelf = (id) => async (dispatch) => {
-    const responseArray = [];
-    const response = await db.collection('shelfies').get(id).then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            responseArray.push({ id: doc.id, shelfData: doc.data()})
-            
-        });
-        console.log(responseArray);
+    let individualShelfData;
+
+    const response = await db.collection('shelfies').doc(id).get().then((documentSnapshot) => {
+        console.log(documentSnapshot.data())
+        individualShelfData = documentSnapshot.data()
     });
-    dispatch({ type: FETCH_SHELF, payload: responseArray })
+
+    console.log(individualShelfData)
+    
+    dispatch({ type: FETCH_SHELF, payload: individualShelfData })
 }
 
 export const editShelf = (id, formValues) => async dispatch => {

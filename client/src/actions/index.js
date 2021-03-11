@@ -102,7 +102,6 @@ export const editShelf = (id, formValues) => async dispatch => {
 
 export const deleteShelf = (id) => async (dispatch) => {
     await db.collection('shelfies').doc(id).delete().then(() => {
-        console.log('Document succesfully deleted!');
     });
 
     dispatch({ type: DELETE_SHELF, payload: id });

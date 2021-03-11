@@ -10,5 +10,4 @@ export default combineReducers({
     form: formReducer,
     shelfs: shelfReducer,
     product: productReducer
-
 });

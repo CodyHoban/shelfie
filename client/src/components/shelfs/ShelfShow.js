@@ -38,7 +38,7 @@ class ShelfShow extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
    
     return { shelf: state.shelfs.selectedShelf };
 };

@@ -43,5 +43,4 @@ const mapStateToProps = (state, ownProps) => {
     return { shelf: state.shelfs.selectedShelf };
 };
 
-
 export default connect(mapStateToProps, { fetchShelf })(ShelfShow);

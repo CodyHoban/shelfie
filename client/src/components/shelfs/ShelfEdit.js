@@ -3,6 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchShelf, editShelf } from '../../actions'
 import ShelfForm from './ShelfForm'
+import ErrorShow from './ErrorShow'
 
 class ShelfEdit extends React.Component {
     componentDidMount() {
@@ -24,13 +25,22 @@ class ShelfEdit extends React.Component {
                     initialValues ={_.pick(this.props.shelf, 'title', 'description')}
                     onSubmit={this.onSubmit} 
                 />
+                { 
+                this.props.errorState && <ErrorShow
+                    errorMessage={this.props.shelfErrorMessage}
+                />
+                }
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    return { shelf: state.shelfs.selectedShelf };
+    return { 
+        shelf: state.shelfs.selectedShelf,
+        errorState: state.shelfs.shelfError,
+        shelfErrorMessage: state.shelfs.shelfErrorMessage
+     };
 }
 
 export default connect(mapStateToProps, { fetchShelf, editShelf })(ShelfEdit);

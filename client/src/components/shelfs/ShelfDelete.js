@@ -8,6 +8,8 @@ import { fetchShelf, deleteShelf } from '../../actions'
 class ShelfDelete extends React.Component {
     componentDidMount() {
         this.props.fetchShelf(this.props.match.params.id)
+        console.log(this.props);
+        console.log('right ere');
     }
 
     renderActions() {

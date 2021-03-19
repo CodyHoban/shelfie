@@ -1,8 +1,9 @@
-import { getByTitle } from '@testing-library/dom';
+import { getByTitle } from '@testing-library/dom'
 import { bind } from 'lodash';
 import shelfs from '../apis/shelfs'
 import db from '../db'
 import history from '../history'
+import ErrorShow from '../components/shelfs/ErrorShow'
 import { 
     SIGN_IN, 
     SIGN_OUT, 
@@ -11,7 +12,8 @@ import {
     FETCH_SHELF,
     DELETE_SHELF,
     EDIT_SHELF,
-    CREATE_PRODUCT
+    CREATE_PRODUCT,
+    SHELF_ERROR
     } from './types';
 
 export const signIn = (userId) => {
@@ -81,8 +83,6 @@ export const fetchShelf = (id) => async (dispatch) => {
         console.log(documentSnapshot.data())
         individualShelfData = documentSnapshot.data()
     });
-
-    console.log(individualShelfData)
     
     dispatch({ type: FETCH_SHELF, payload: individualShelfData })
 }
@@ -92,7 +92,7 @@ export const fetchShelf = (id) => async (dispatch) => {
 export const editShelf = (id, formValues) => async dispatch => {
     // const response = await shelfs.patch(`/shelfs/${id}`, formValues);
     try { 
-        await db.collection('shelfies').doc(id).update({
+        await db.collection('jibberish').doc(id).update({
             title: formValues.title, 
             description: formValues.description
         });
@@ -100,7 +100,9 @@ export const editShelf = (id, formValues) => async dispatch => {
         // dispatch({ type: EDIT_SHELF, payload: response.data});
         history.push('/');
     } catch (error) {
-        console.log(error);        
+        console.log(error.message);
+        console.log('now we')
+        dispatch({ type: SHELF_ERROR, payload:  true, message: error.message})  
     } 
 }
 

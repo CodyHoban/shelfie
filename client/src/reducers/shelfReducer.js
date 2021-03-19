@@ -20,8 +20,8 @@ export default (state = stateConfig, action) => {
             return { ...state, shelfList: action.payload };
         case FETCH_SHELF:
             return { ...state, selectedShelf: action.payload };
-        case CREATE_SHELF:
-            return { ...state, [action.payload.id]: action.payload };
+        // case CREATE_SHELF:
+        //     return { ...state, [action.payload.id]: action.payload };
         case EDIT_SHELF:
             return { ...state, [action.payload.id]: action.payload };
         case DELETE_SHELF:

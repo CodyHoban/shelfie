@@ -7,7 +7,6 @@ import ShelfForm from './ShelfForm'
 class ShelfEdit extends React.Component {
     componentDidMount() {
         this.props.fetchShelf(this.props.match.params.id);
-        console.log(this.props)
     }
 
     onSubmit = formValues => {
@@ -30,8 +29,8 @@ class ShelfEdit extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return { shelf: state.shelfs[ownProps.match.params.id] };
+const mapStateToProps = (state) => {
+    return { shelf: state.shelfs.selectedShelf };
 }
 
 export default connect(mapStateToProps, { fetchShelf, editShelf })(ShelfEdit);

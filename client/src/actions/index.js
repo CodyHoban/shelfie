@@ -1,3 +1,4 @@
+import { getByTitle } from '@testing-library/dom';
 import { bind } from 'lodash';
 import shelfs from '../apis/shelfs'
 import db from '../db'
@@ -36,7 +37,7 @@ export const signOut = () => {
 
 export const createShelf = (formValues) => async (dispatch, getState) => {
     const { userId } =getState().auth;
-    const response = await db.collection('shelfies').add({ ...formValues, userId }).then((docRef) => {})
+    await db.collection('shelfies').add({ ...formValues, userId }).then((docRef) => {})
 
     
 
@@ -76,7 +77,7 @@ export const fetchShelfs = () => async (dispatch) => {
 export const fetchShelf = (id) => async (dispatch) => {
     let individualShelfData;
 
-    const response = await db.collection('shelfies').doc(id).get().then((documentSnapshot) => {
+    await db.collection('shelfies').doc(id).get().then((documentSnapshot) => {
         console.log(documentSnapshot.data())
         individualShelfData = documentSnapshot.data()
     });
@@ -86,11 +87,21 @@ export const fetchShelf = (id) => async (dispatch) => {
     dispatch({ type: FETCH_SHELF, payload: individualShelfData })
 }
 
-export const editShelf = (id, formValues) => async dispatch => {
-    const response = await shelfs.patch(`/shelfs/${id}`, formValues);
 
-    dispatch({ type: EDIT_SHELF, payload: response.data});
-    history.push('/');
+// db.collection("users").doc(doc.id).update({foo: "bar"});
+export const editShelf = (id, formValues) => async dispatch => {
+    // const response = await shelfs.patch(`/shelfs/${id}`, formValues);
+    try { 
+        await db.collection('shelfies').doc(id).update({
+            title: formValues.title, 
+            description: formValues.description
+        });
+    
+        // dispatch({ type: EDIT_SHELF, payload: response.data});
+        history.push('/');
+    } catch (error) {
+        console.log(error);        
+    } 
 }
 
 // export const deleteShelf = (id) => async (dispatch) => {

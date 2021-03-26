@@ -100,10 +100,14 @@ export const editShelf = (id, formValues) => async dispatch => {
         // dispatch({ type: EDIT_SHELF, payload: response.data});
         history.push('/');
     } catch (error) {
-        console.log(error.message);
+        console.log(error.name);
         console.log('now we')
-        dispatch({ type: SHELF_ERROR, payload:  true, message: error.message})  
+        dispatch({ type: SHELF_ERROR, payload:  true, message: error.name})  
     } 
+}
+
+export const toggleErrorState =() => dispatch => {
+    
 }
 
 // export const deleteShelf = (id) => async (dispatch) => {

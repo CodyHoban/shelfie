@@ -6,14 +6,15 @@ import {
     EDIT_SHELF,
     DELETE_SHELF,
     CREATE_PRODUCT,
-    SHELF_ERROR
+    SHELF_ERROR,
+    REMOVE_SHELF_ERROR
 } from '../actions/types'
 
 const stateConfig = { 
     shelfList: [],
     selectedShelf: {},
     shelfError: false,
-    shelfErrorMessage: '',
+    shelfErrorMessage: ''
 }
 
 export default (state = stateConfig, action) => {
@@ -34,6 +35,8 @@ export default (state = stateConfig, action) => {
                 shelfError: action.payload, 
                 shelfErrorMessage: action.message,
             };
+        case REMOVE_SHELF_ERROR:
+            return { ...state, shelfError: action.payload }
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchShelf, editShelf } from '../../actions'
+import { fetchShelf, editShelf, toggleErrorState } from '../../actions'
 import ShelfForm from './ShelfForm'
 import ErrorShow from './ErrorShow'
 
@@ -28,6 +28,7 @@ class ShelfEdit extends React.Component {
                 { 
                 this.props.errorState && <ErrorShow
                     errorMessage={this.props.shelfErrorMessage}
+                    errorToggle={this.props.toggleErrorState}
                 />
                 }
             </div>
@@ -43,4 +44,4 @@ const mapStateToProps = (state) => {
      };
 }
 
-export default connect(mapStateToProps, { fetchShelf, editShelf })(ShelfEdit);
+export default connect(mapStateToProps, { fetchShelf, editShelf, toggleErrorState  })(ShelfEdit);

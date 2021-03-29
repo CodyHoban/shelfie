@@ -13,7 +13,8 @@ import {
     DELETE_SHELF,
     EDIT_SHELF,
     CREATE_PRODUCT,
-    SHELF_ERROR
+    SHELF_ERROR,
+    REMOVE_SHELF_ERROR
     } from './types';
 
 export const signIn = (userId) => {
@@ -92,7 +93,7 @@ export const fetchShelf = (id) => async (dispatch) => {
 export const editShelf = (id, formValues) => async dispatch => {
     // const response = await shelfs.patch(`/shelfs/${id}`, formValues);
     try { 
-        await db.collection('jibberish').doc(id).update({
+        await db.collection('sgibberish').doc(id).update({
             title: formValues.title, 
             description: formValues.description
         });
@@ -107,7 +108,8 @@ export const editShelf = (id, formValues) => async dispatch => {
 }
 
 export const toggleErrorState =() => dispatch => {
-    
+    console.log('are we in?');
+    dispatch({ type: REMOVE_SHELF_ERROR, payload: false })
 }
 
 // export const deleteShelf = (id) => async (dispatch) => {

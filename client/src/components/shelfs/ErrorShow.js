@@ -7,7 +7,6 @@ import { fetchShelf, editShelf } from '../../actions'
 
 class ErrorShow extends React.Component {
     
-
     // componentDidMount() {
     //     this.props.fetchShelf(this.props.match.params.id)
     // }
@@ -29,6 +28,12 @@ class ErrorShow extends React.Component {
         // return this.setState({errorMessage: err.message});
     }
 
+    errorToggle() {
+        console.log(this.props);
+        console.log('')
+        this.props.errorToggle()
+    }
+
     render() {
         console.log(this.props);
         console.log('this is the new one')
@@ -37,7 +42,7 @@ class ErrorShow extends React.Component {
                 title="Error Screen"
                 content={this.props.errorMessage}
                 actions={this.renderActions()}
-                onDismiss={() => history.push('/')}
+                onDismiss={() => this.errorToggle()}
             />
         );
     }

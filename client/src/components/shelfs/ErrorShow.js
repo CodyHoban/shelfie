@@ -10,12 +10,19 @@ class ErrorShow extends React.Component {
     // componentDidMount() {
     //     this.props.fetchShelf(this.props.match.params.id)
     // }
+    homePush() {
+        console.log(this.props)
+        console.log('check these props')
+        this.props.errorToggle();
+        history.push('/')
+    }
 
     renderActions() {
         return (
-            <React.Fragment>
-                <Link to="/" className="ui button">return home</Link>
-            </React.Fragment>
+            // <React.Fragment>
+            //     <Link to="/" className="ui button">Return Home</Link>
+            // </React.Fragment>
+            <button onClick={() => this.homePush()}>Return Home</button>
         );
     }
 
@@ -29,19 +36,18 @@ class ErrorShow extends React.Component {
     }
 
     errorToggle() {
-        console.log(this.props);
-        console.log('')
         this.props.errorToggle()
     }
 
     render() {
-        console.log(this.props);
-        console.log('this is the new one')
         return (
             <Modal 
                 title="Error Screen"
                 content={this.props.errorMessage}
-                actions={this.renderActions()}
+                actions={
+                    this.renderActions()
+                    
+                }
                 onDismiss={() => this.errorToggle()}
             />
         );

@@ -7,7 +7,8 @@ import {
     DELETE_SHELF,
     CREATE_PRODUCT,
     SHELF_ERROR,
-    REMOVE_SHELF_ERROR
+    REMOVE_SHELF_ERROR,
+    SHELF_FORM_LOAD
 } from '../actions/types'
 
 const stateConfig = { 
@@ -37,6 +38,8 @@ export default (state = stateConfig, action) => {
             };
         case REMOVE_SHELF_ERROR:
             return { ...state, shelfError: action.payload }
+        case SHELF_FORM_LOAD:
+            return {data: action.data}
         default:
             return state;
     }

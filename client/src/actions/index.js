@@ -14,7 +14,8 @@ import {
     EDIT_SHELF,
     CREATE_PRODUCT,
     SHELF_ERROR,
-    REMOVE_SHELF_ERROR
+    REMOVE_SHELF_ERROR,
+    SHELF_FORM_LOAD
     } from './types';
 
 export const signIn = (userId) => {
@@ -93,7 +94,7 @@ export const fetchShelf = (id) => async (dispatch) => {
 export const editShelf = (id, formValues) => async dispatch => {
     // const response = await shelfs.patch(`/shelfs/${id}`, formValues);
     try { 
-        await db.collection('sgibberish').doc(id).update({
+        await db.collection('shelfies').doc(id).update({
             title: formValues.title, 
             description: formValues.description
         });
@@ -133,3 +134,5 @@ export const createProduct= (formValues) => async (dispatch, getState) => {
 
     dispatch({ type: CREATE_PRODUCT, payload: response.data });
 }
+
+export const load = data => ({ type: SHELF_FORM_LOAD, data })

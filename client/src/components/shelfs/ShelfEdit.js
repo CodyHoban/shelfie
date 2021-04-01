@@ -15,14 +15,17 @@ class ShelfEdit extends React.Component {
     };
 
     render() {
+        console.log(this.props);
+        console.log('shelfEdit');
         if (!this.props.shelf) {
             return <div>Loading...</div>
         }
+        
         return (
             <div>
                 <h3>Edit a Shelf</h3>
                 <ShelfForm 
-                    initialValues ={_.pick(this.props.shelf, 'title', 'description')}
+                    initialValues={_.pick(this.props.shelf, 'title', 'description')}
                     onSubmit={this.onSubmit} 
                 />
                 { 

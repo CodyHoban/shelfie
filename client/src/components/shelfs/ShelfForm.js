@@ -1,14 +1,19 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { load as loadAccount } from '../../actions'
+import { load as SHELF_FORM_LOAD } from '../../actions'
 import { connect } from 'react-redux'
 
 class ShelfForm extends React.Component {
     // componentDidMount() {
     //     this.props.initialValues;
     // }
-
-
+    constructor(props) {
+        super(props);
+        this.state = { 
+            title: this.props.title, 
+            description: this.props.description
+      }
+    }
 
     renderError({ error, touched }) {
         if (touched && error) {
@@ -21,8 +26,6 @@ class ShelfForm extends React.Component {
     }
 
     renderInput =({ input, label, meta }) => {
-        console.log(input);
-        console.log('input');
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
             <div className={className}>
@@ -34,22 +37,21 @@ class ShelfForm extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        console.log(this.props);
-        console.log('inside ShelfForm');
         this.props.onSubmit(formValues);
     }
 
     render() {
-        console.log(this.props);
-        console.log('inside ShelfForm');
+        console.log(this.state);
         return (
             <form
                 onSubmit={this.props.handleSubmit(this.onSubmit)} 
                 className="ui form error">
                 <Field name="title" component={this.renderInput} label="Enter Title" />
-                <  name="description" component={this.renderInput}  label="Enter Description" />
-                <  className="ui button primary">Submit</button>
-            </ >
+                <Field name="description" component={this.renderInput}  label="Enter Description" />
+                <input value={this.state.title}></input>
+                <input value={this.state.description}></input>
+                <button className="ui button primary">Submit</button>
+            </form>
             
         );
     }
@@ -58,7 +60,7 @@ class ShelfForm extends React.Component {
 const validate = (formValues) => {
     const errors = {};
     if (!formValues.title) {
-         .title = 'You must enter a title';
+        errors.title = 'You must enter a title';
     }
 
     if (!formValues.description) {
@@ -83,7 +85,7 @@ ShelfForm = connect(
     state => ({
       initialValues: state.shelfs.selectedShelf // pull initial values from account reducer
     }),
-    { load: loadAccount } // bind account loading action creator
+    { load: SHELF_FORM_LOAD } // bind account loading action creator
   )(ShelfForm)
 
   export default ShelfForm;

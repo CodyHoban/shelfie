@@ -7,6 +7,7 @@ import ErrorShow from './ErrorShow'
 
 class ShelfEdit extends React.Component {
     componentDidMount() {
+
         this.props.fetchShelf(this.props.match.params.id);
     }
 
@@ -15,17 +16,17 @@ class ShelfEdit extends React.Component {
     };
 
     render() {
-        console.log(this.props);
-        console.log('shelfEdit');
         if (!this.props.shelf) {
             return <div>Loading...</div>
         }
-        
+        console.log(this.props);
         return (
             <div>
                 <h3>Edit a Shelf</h3>
                 <ShelfForm 
-                    initialValues={_.pick(this.props.shelf, 'title', 'description')}
+                    //initialValues={_.pick(this.props.shelf, 'title', 'description')}
+                    title={this.props.shelf.title}
+                    description={this.props.shelf.description}
                     onSubmit={this.onSubmit} 
                 />
                 { 

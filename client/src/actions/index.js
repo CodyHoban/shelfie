@@ -82,7 +82,6 @@ export const fetchShelf = (id) => async (dispatch) => {
     let individualShelfData;
 
     await db.collection('shelfies').doc(id).get().then((documentSnapshot) => {
-        console.log(documentSnapshot.data())
         individualShelfData = documentSnapshot.data()
     });
     

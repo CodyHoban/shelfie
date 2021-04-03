@@ -4,16 +4,16 @@ import { load as SHELF_FORM_LOAD } from '../../actions'
 import { connect } from 'react-redux'
 
 class ShelfForm extends React.Component {
-    // componentDidMount() {
-    //     this.props.initialValues;
-    // }
-    constructor(props) {
-        super(props);
-        this.state = { 
-            title: this.props.title, 
-            description: this.props.description
-      }
+    componentDidMount() {
+        this.props.initialize();
     }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = { 
+    //         title: this.props.title, 
+    //         description: this.props.description
+    //   }
+    // }
 
     renderError({ error, touched }) {
         if (touched && error) {
@@ -48,8 +48,8 @@ class ShelfForm extends React.Component {
                 className="ui form error">
                 <Field name="title" component={this.renderInput} label="Enter Title" />
                 <Field name="description" component={this.renderInput}  label="Enter Description" />
-                <input value={this.state.title}></input>
-                <input value={this.state.description}></input>
+                {/* <input value={this.state.title}></input>
+                <input value={this.state.description}></input> */}
                 <button className="ui button primary">Submit</button>
             </form>
             

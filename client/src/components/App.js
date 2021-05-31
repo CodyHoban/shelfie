@@ -10,6 +10,10 @@ import ItemCreate from './products/ProductCreate'
 import Header from './Header'
 import history from '../history'
 
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import theme from '../theme'
+
 
 class App extends React.Component {
     // componentWillMount(){
@@ -32,26 +36,28 @@ class App extends React.Component {
     //     fire.database().ref('messages').push( this.inputEl.value );
     //     this.inputEl.value = ''; // <- clear the input
     //   }
-      
 
       render() { 
 
         return (
-            <div className="ui container">
-                <Router history={history}>
-                    <div>
-                        <Header />
-                        <Switch>
-                            <Route path="/" exact component={ShelfList} />
-                            <Route path="/shelfs/new" exact component={ShelfCreate} />
-                            <Route path="/shelfs/edit/:id" exact component={ShelfEdit} />
-                            <Route path="/shelfs/delete/:id" exact component={ShelfDelete} />
-                            <Route path="/Shelfs/:id" exact component={ShelfShow} />
-                            <Route path="/shelfs/product/new" exact component={ItemCreate} />
-                        </Switch>
-                    </div>
-                </Router>
-            </div>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <div className="ui container">
+                    <Router history={history}>
+                        <div>
+                            <Header />
+                            <Switch>
+                                <Route path="/" exact component={ShelfList} />
+                                <Route path="/shelfs/new" exact component={ShelfCreate} />
+                                <Route path="/shelfs/edit/:id" exact component={ShelfEdit} />
+                                <Route path="/shelfs/delete/:id" exact component={ShelfDelete} />
+                                <Route path="/Shelfs/:id" exact component={ShelfShow} />
+                                <Route path="/shelfs/product/new" exact component={ItemCreate} />
+                            </Switch>
+                        </div>
+                    </Router>
+                </div>
+            </ThemeProvider>
         );
     }
 };

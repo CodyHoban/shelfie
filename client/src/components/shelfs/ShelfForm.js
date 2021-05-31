@@ -2,6 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { load as SHELF_FORM_LOAD } from '../../actions'
 import { connect } from 'react-redux'
+import Button from '@material-ui/core/button'
 
 class ShelfForm extends React.Component {
     componentDidMount() {
@@ -50,7 +51,7 @@ class ShelfForm extends React.Component {
                 <Field name="description" component={this.renderInput}  label="Enter Description" />
                 {/* <input value={this.state.title}></input>
                 <input value={this.state.description}></input> */}
-                <button className="ui button primary">Submit</button>
+                <Button variant="contained" color="primary">Submit</Button>
             </form>
             
         );

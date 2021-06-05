@@ -12,6 +12,7 @@ import history from '../history'
 
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { withTheme } from '@material-ui/core/styles'
 import theme from '../theme'
 
 
@@ -42,7 +43,7 @@ class App extends React.Component {
         return (
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <div className="ui container">
+                <div  className="ui container">
                     <Router history={history}>
                         <div>
                             <Header />
@@ -62,4 +63,4 @@ class App extends React.Component {
     }
 };
 
-export default App;
+export default withTheme(App);

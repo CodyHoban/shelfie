@@ -5,6 +5,7 @@ import { fetchShelfs } from '../../actions'
 import shelfReducer from '../../reducers/shelfReducer';
 import { _ } from 'lodash';
 import shelfs from '../../apis/shelfs';
+import Button from '@material-ui/core/button'
 
 class ShelfList extends React.Component {
     componentDidMount() {
@@ -17,12 +18,17 @@ class ShelfList extends React.Component {
             return (
                 <div className="item" key={shelf.id}>
                     <div className="right floated content">
-                        <Link to={`/shelfs/edit/${shelf.id}`} className="ui button primary">
-                            Edit
-                        </Link>
-                        <Link to={`/shelfs/delete/${shelf.id}`} className="ui button negative">
-                            Delete
-                        </Link>
+                        <Button variant="contained" color="secondary"> 
+                            <Link to={`/shelfs/edit/${shelf.id}`}>
+                                Edit
+                            </Link>
+                        </Button>
+                        <Button variant="contained" color="secondary">
+                            <Link to={`/shelfs/delete/${shelf.id}`} className="">
+                                Delete
+                            </Link>
+                        </Button>
+                        
                     </div>
                     <i className="large middle aligned icon camera" />
                     <div className="content">

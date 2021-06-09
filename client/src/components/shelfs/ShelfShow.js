@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchShelf } from '../../actions'
+import Button from '@material-ui/core/button'
 
 class ShelfShow extends React.Component {
     componentDidMount() {
@@ -13,7 +14,7 @@ class ShelfShow extends React.Component {
         return (
             <div style={{ textAlign: 'right'}}>
                 <Button variant="contained" color="secondary">
-                    <Link to="/shelfs/product/new" className="ui button primary">
+                    <Link to="/shelfs/product/new">
                         Add Product
                     </Link>
                 </Button>

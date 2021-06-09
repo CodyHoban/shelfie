@@ -18,7 +18,7 @@ class ShelfList extends React.Component {
             return (
                 <div className="item" key={shelf.id}>
                     <div className="right floated content">
-                        <Button variant="contained" color="secondary"> 
+                        <Button variant="contained" color="primary"> 
                             <Link to={`/shelfs/edit/${shelf.id}`}>
                                 Edit
                             </Link>

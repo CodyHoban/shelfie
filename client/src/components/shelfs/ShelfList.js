@@ -47,9 +47,11 @@ class ShelfList extends React.Component {
         if (this.props.isSignedIn) {
             return (
                 <div style={{ textAlign: 'right' }}>
-                    <Link to="/shelfs/new" className="ui button primary">
-                        Create Shelf
-                    </Link>
+                    <Button variant="contained" color="primary">
+                        <Link to="/shelfs/new">
+                            Create Shelf
+                        </Link>
+                    </Button>
                 </div>
             )
         }

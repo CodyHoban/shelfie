@@ -28,10 +28,14 @@ class ShelfList extends React.Component {
                             </Link> */}
                             edit
                         </Button>
-                        <Button variant="contained" color="secondary">
-                            <Link to={`/shelfs/delete/${shelf.id}`} className="">
+                        <Button 
+                            variant="contained" color="secondary"
+                            onClick={() => history.push(`/shelfes/delete/${shelf.id}`)}
+                        >
+                            {/* <Link to={`/shelfs/delete/${shelf.id}`} className="">
                                 Delete
-                            </Link>
+                            </Link> */}
+                            delete
                         </Button>
                         
                     </div>

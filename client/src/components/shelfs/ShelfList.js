@@ -6,6 +6,7 @@ import shelfReducer from '../../reducers/shelfReducer';
 import { _ } from 'lodash';
 import shelfs from '../../apis/shelfs';
 import Button from '@material-ui/core/button'
+import history from '../../history'
 
 class ShelfList extends React.Component {
     componentDidMount() {
@@ -18,10 +19,14 @@ class ShelfList extends React.Component {
             return (
                 <div className="item" key={shelf.id}>
                     <div className="right floated content">
-                        <Button variant="contained" color="primary"> 
-                            <Link to={`/shelfs/edit/${shelf.id}`}>
+                        <Button 
+                            variant="contained" color="primary"
+                            onClick={() => history.push(`/shelfs/edit/${shelf.id}`)}
+                        > 
+                            {/* <Link to={`/shelfs/edit/${shelf.id}`} color="inherit">
                                 Edit
-                            </Link>
+                            </Link> */}
+                            edit
                         </Button>
                         <Button variant="contained" color="secondary">
                             <Link to={`/shelfs/delete/${shelf.id}`} className="">

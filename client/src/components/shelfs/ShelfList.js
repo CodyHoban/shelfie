@@ -56,10 +56,14 @@ class ShelfList extends React.Component {
         if (this.props.isSignedIn) {
             return (
                 <div style={{ textAlign: 'right' }}>
-                    <Button variant="contained" color="primary">
-                        <Link to="/shelfs/new">
+                    <Button 
+                        variant="contained" color="primary"
+                        onClick={() => history.push(`/shelfs/new`)}
+                    >
+                        {/* <Link to="/shelfs/new">
                             Create Shelf
-                        </Link>
+                        </Link> */}
+                        Create Shelf
                     </Button>
                 </div>
             )

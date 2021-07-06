@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Field, reduxForm } from 'redux-form'
+import DatePicker from "react-datepicker"
+import SelectedDate from './DatePicker'
+
+import "react-datepicker/dist/react-datepicker.css"
 
 class ShelfForm extends React.Component {
     renderError({ error, touched }) {
@@ -54,6 +58,18 @@ class ShelfForm extends React.Component {
         );
     }
 
+    renderExpireDate = ({ input, label, meta, date, handleDateSelect, handleDateChange }) => {
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <SelectedDate/>
+                {this.renderError(meta)}
+            </div>
+        );
+    }
+
+
     onSubmit = (formValues) => {
         this.props.onSubmit(formValues);
     }
@@ -64,6 +80,7 @@ class ShelfForm extends React.Component {
                 <Field name="name" component={this.renderInput} label="Give it a Name" />
                 <Field name="opinion" component={this.renderTextField}  label="What are your Thoughts?" />
                 <Field name="icon" component={this.renderIconMenu} label="Choose an Icon" />
+                <Field name="date" component={this.renderExpireDate} label="Expiration Date" />
                 <button className="ui button primary">Submit</button>
             </form>
             

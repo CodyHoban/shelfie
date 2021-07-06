@@ -13,7 +13,7 @@ class ShelfShow extends React.Component {
     renderCreateProduct() {
         return (
             <div style={{ textAlign: 'right'}}>
-                <Button variant="contained" color="secondary">
+                <Button variant="contained" color="primary">
                     <Link to="/shelfs/product/new">
                         Add Product
                     </Link>

@@ -58,7 +58,18 @@ class ShelfForm extends React.Component {
         );
     }
 
-    renderExpireDate = ({ input, label, meta, date, handleDateSelect, handleDateChange }) => {
+    renderExpireDate = ({ input, label, meta }) => {
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <SelectedDate/>
+                {this.renderError(meta)}
+            </div>
+        );
+    }
+
+    renderPurchaseDate = ({ input, label, meta }) => {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
             <div className={className}>
@@ -81,6 +92,7 @@ class ShelfForm extends React.Component {
                 <Field name="opinion" component={this.renderTextField}  label="What are your Thoughts?" />
                 <Field name="icon" component={this.renderIconMenu} label="Choose an Icon" />
                 <Field name="date" component={this.renderExpireDate} label="Expiration Date" />
+                <Field name="date" component={this.renderPurchaseDate} label="Purchase Date" />
                 <button className="ui button primary">Submit</button>
             </form>
             

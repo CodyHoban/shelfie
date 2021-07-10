@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import DatePicker from "react-datepicker"
 import SelectedDate from './DatePicker'
+import Button from '@material-ui/core/button'
 
 import "react-datepicker/dist/react-datepicker.css"
+import { withStyles, createStyles } from '@material-ui/core'
 
 class ShelfForm extends React.Component {
     renderError({ error, touched }) {
@@ -93,7 +95,7 @@ class ShelfForm extends React.Component {
                 <Field name="icon" component={this.renderIconMenu} label="Choose an Icon" />
                 <Field name="date" component={this.renderExpireDate} label="Expiration Date" />
                 <Field name="date" component={this.renderPurchaseDate} label="Purchase Date" />
-                <button className="ui button primary">Submit</button>
+                <Button variant="contained" color="primary">Submit</Button>
             </form>
             
         );
@@ -113,6 +115,32 @@ const validate = (formValues) => {
     return errors
 };
 
+const styles = () =>
+  createStyles({
+    // backgroundColor: {
+    //   backgroundColor: 'red'
+    // },
+    // shelfStyle: {
+    //    '&:hover': {
+    //        cursor: "pointer",
+
+    //    },
+    //    fontSize: 14,     
+    // }
+    inputStyle: {
+        input[type="text"] {
+            backgroundColor: '#D7F9FA',
+        }
+    }
+    
+  });
+
+// input[type="search"] {    
+//     background-color :rgb(105, 103, 116);
+//     border:0px;
+//     border-bottom:1px solid #ccc;
+//    }
+
 // export default connect()(reduxForm({   This format will work to connect
 //     form: 'shelfCreate',
 //     validate
@@ -121,5 +149,5 @@ const validate = (formValues) => {
 export default (reduxForm({
     form: 'shelfForm',
     validate
-})(ShelfForm));
+})(withStyles(styles)(ShelfForm)));
 

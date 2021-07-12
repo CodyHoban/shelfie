@@ -117,16 +117,16 @@ const validate = (formValues) => {
 
 const styles = () =>
   createStyles({
-    // backgroundColor: {
-    //   backgroundColor: 'red'
-    // },
-    // shelfStyle: {
-    //    '&:hover': {
-    //        cursor: "pointer",
+    backgroundColor: {
+      backgroundColor: 'red'
+    },
+    shelfStyle: {
+       '&:hover': {
+           cursor: "pointer",
 
-    //    },
-    //    fontSize: 14,     
-    // }
+       },
+       fontSize: 14,     
+    }
     inputStyle: {
         input[type="text"] {
             backgroundColor: '#D7F9FA',

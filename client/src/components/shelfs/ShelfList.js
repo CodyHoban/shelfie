@@ -33,7 +33,8 @@ class ShelfList extends React.Component {
     
 
     renderList() {
-        const { classes } = this.props
+        const { classes } = this.props;
+        //const classes = this.props.classes these are equvilent statments
         return this.props.shelfs.shelfList.map(shelf => {
             
             return (

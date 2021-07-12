@@ -6,6 +6,7 @@ import Button from '@material-ui/core/button'
 
 class ShelfShow extends React.Component {
     componentDidMount() {
+        console.log("here");
         this.props.fetchShelf(this.props.match.params.id);
     }
     

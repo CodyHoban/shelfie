@@ -23,18 +23,29 @@ class ShelfForm extends React.Component {
         return (
             <div className={className}>
                 <label>{label}</label>
-                <input {...input} autoComplete="off" />
+                <input 
+                    style={{
+                        backgroundColor: "#D7F9FA"
+                    }} 
+                    {...input} 
+                    autoComplete="off"
+                />
                 {this.renderError(meta)}
             </div>
         );
     }
     
     renderTextField = ({ input, label, meta }) => {
+        const { classes } = this.props;
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
             <div className={className}>
                 <label>{label}</label>
-                <textarea {...input} />
+                <textarea style={{
+                     backgroundColor: "#D7F9FA"
+                    }}  
+                    {...input} 
+                />
                 {this.renderError(meta)}
             </div>
         );
@@ -46,7 +57,11 @@ class ShelfForm extends React.Component {
             <div className={className}>
                 <div className="ui left icon input">
                     <label className="ui dropdown item">{label}</label>
-                    <select>
+                    <select 
+                        style={{
+                            backgroundColor: "#D7F9FA"
+                        }}
+                    >
                         <option>
                             <i class="chess icon"></i>
                         </option>
@@ -72,6 +87,7 @@ class ShelfForm extends React.Component {
     }
 
     renderPurchaseDate = ({ input, label, meta }) => {
+        const { classes } = this.props;
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
             <div className={className}>
@@ -88,6 +104,7 @@ class ShelfForm extends React.Component {
     }
 
     render() {
+        
         return (
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                 <Field name="name" component={this.renderInput} label="Give it a Name" />
@@ -117,20 +134,18 @@ const validate = (formValues) => {
 
 const styles = () =>
   createStyles({
-    backgroundColor: {
-      backgroundColor: 'red'
-    },
-    shelfStyle: {
-       '&:hover': {
-           cursor: "pointer",
+    // backgroundColor: {
+    //   backgroundColor: ''#D7F9FA''
+    // },
+    // shelfStyle: {
+    //    '&:hover': {
+    //        cursor: "pointer",
 
-       },
-       fontSize: 14,     
-    }
+    //    },
+    //    fontSize: 14,     
+    // }
     inputStyle: {
-        input[type="text"] {
-            backgroundColor: '#D7F9FA',
-        }
+            background: '#D7F9FA',
     }
     
   });

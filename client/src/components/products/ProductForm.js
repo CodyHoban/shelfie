@@ -68,6 +68,7 @@ class ShelfForm extends React.Component {
                         <i class="chess icon"></i>
                         <option value="lime">Lime</option>
                         <option value="coconut">Coconut</option>
+                        <option value="mango">Mango</option>
                     </select>
                     {this.renderError(meta)}
                 </div>
@@ -144,9 +145,9 @@ const styles = () =>
     //    },
     //    fontSize: 14,     
     // }
-    inputStyle: {
-            background: '#D7F9FA',
-    }
+    // inputStyle: {
+    //         background: '#D7F9FA',
+    // }
     
   });
 

@@ -69,6 +69,7 @@ class ShelfForm extends React.Component {
                         <option value="lime">Lime</option>
                         <option value="coconut">Coconut</option>
                         <option value="mango">Mango</option>
+                        <option value="banana">Mango</option>
                     </select>
                     {this.renderError(meta)}
                 </div>
